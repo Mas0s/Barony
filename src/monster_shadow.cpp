@@ -29,14 +29,14 @@ void initShadow(Entity* my, Stat* myStats)
 
 	if ( multiplayer != CLIENT )
 	{
-		MONSTER_SPOTSND = 60;
+		MONSTER_SPOTSND = 60; //TODO: Shadow SPOTSND.
 		MONSTER_SPOTVAR = 3;
-		MONSTER_IDLESND = 98;
+		MONSTER_IDLESND = 98; //TODO: Shadow IDLESND.
 		MONSTER_IDLEVAR = 3;
 	}
 	if ( multiplayer != CLIENT && !MONSTER_INIT )
 	{
-		if ( myStats != NULL )
+		if ( myStats != nullptr )
 		{
 			if ( !myStats->leader_uid )
 			{
@@ -50,22 +50,17 @@ void initShadow(Entity* my, Stat* myStats)
 			int customItemsToGenerate = ITEM_CUSTOM_SLOT_LIMIT;
 
 			// boss variants
-			if ( rand() % 50 || my->flags[USERFLAG2] )
+			if ( rand() % 50 == 0 && !my->flags[USERFLAG2] )
 			{
-
-			}
-			else
-			{
-				myStats->DEX = 10;
-				strcpy(myStats->name, "Lilith");
-				for ( c = 0; c < 2; c++ )
-				{
-					Entity* entity = summonMonster(SUCCUBUS, my->x, my->y);
-					if ( entity )
-					{
-						entity->parent = my->getUID();
-					}
-				}
+				strcpy(myStats->name, "Baratheon"); //Long live the king, who commands his grue army.
+				myStats->MAXHP = 150;
+				myStats->HP = myStats->MAXHP;
+				myStats->MAXMP = 40;
+				myStats->MP = myStats->MAXMP;
+				stats->LVL = 22;
+				stats->GOLD = 1000;
+				stats->RANDOM_GOLD = 500;
+				stats->HUNGER = 900;
 			}
 
 			// random effects
