@@ -579,6 +579,24 @@ void setDefaultMonsterStats(Stat* stats, int sprite)
 		case 89:
 		case (1000 + SHADOW):
 			stats->type = SHADOW;
+			stats->sex = static_cast<sex_t>(rand()%2);
+			stats->appearance = 0;
+			stats->MAXHP = 120;
+			stats->HP = stats->MAXHP;
+			stats->MAXMP = 20;
+			stats->MP = stats->MAXMP;
+			stats->OLDHP = stats->HP;
+			stats->STR = 10;
+			stats->DEX = 8;
+			stats->CON = 4;
+			stats->INT = 1;
+			stats->PER = 20;
+			stats->CHR = -2;
+			stats->EXP = 0;
+			stats->LVL = 20;
+			stats->GOLD = 100;
+			stats->RANDOM_GOLD = 50;
+			stats->HUNGER = 900;
 			stats->RANDOM_MAXHP = stats->RANDOM_HP;
 			stats->RANDOM_MAXMP = stats->RANDOM_MP;
 			break;
